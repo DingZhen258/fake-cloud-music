@@ -13,23 +13,26 @@
 </script>
 
 <style scoped>
-    .nav-bar {
+.nav-bar {
+    background-color: #f6f6f6;
     display: flex;
     height: .88rem;
-    line-height: 44px;
+    line-height: .88rem;
     text-align: center;
     box-shadow: 0 1px 1px rgba(100,100,100,.1);
-  }
+}
 
-  .left, .right {
+.left, .right {
+    display: flex;
     width: 1.2rem;
     height: .88rem;
-   
-  }
+    justify-content: space-around;
+    align-items: center;
+}
 
-  .center {
+.center {
     display: flex;
     flex: 1;
     justify-content: space-around;
-  }
+}
 </style>

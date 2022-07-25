@@ -1,7 +1,9 @@
 <template>
-    <div>
-         <Navbar class="main-nav">
-          <template v-slot:leftIcon><img src="@/assets/img/list.svg" alt=""></template>
+      <!-- 通过vuex来全局控制啥时候显示导航栏 -->
+      <Navbar class="main-nav" v-show="$route.meta.showTabbar">
+          <template v-slot:leftIcon>
+            <svg class="iconpark-icon"><use href="#hamburger-button"></use></svg>
+          </template>
           <template v-slot:title>
           <div class="nav-item" v-for="(item,index) in titles" :key="item" 
                @click="navClick(index)"
@@ -9,9 +11,10 @@
                >{{item}}
           </div>
         </template>
-        <template v-slot:rightIcon><img src="@/assets/img/Search-20.svg" alt=""></template>
+        <template v-slot:rightIcon>
+          <svg class="iconpark-icon"><use href="#search"></use></svg>
+        </template>
       </Navbar>
-    </div>
 </template>
 
 <script>
@@ -30,8 +33,8 @@ import Navbar from '@/components/common/navbar/Navbar.vue'
             navClick(index){
             this.currentIndex=index
             switch(index){
-             case 0 : this.$router.replace('/home'); break;
-             case 1 : this.$router.replace('/find'); break;
+             case 0 : this.$router.replace('/profile'); break;
+             case 1 : this.$router.replace('/home'); break;
              case 2 : this.$router.replace('/yuncun'); break;
              case 3 : this.$router.replace('/video'); break;
         }
@@ -41,10 +44,12 @@ import Navbar from '@/components/common/navbar/Navbar.vue'
 </script>
 
 <style scoped>
-.main-nav img{
+.main-nav{
+}
+.iconpark-icon{
+  color: black;
   width: .5rem;
   height: .5rem;
-  vertical-align: middle;
 }
 .isAcitve{
   font-size: .4rem;

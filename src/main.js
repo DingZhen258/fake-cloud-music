@@ -2,7 +2,12 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Swipe, SwipeItem } from 'vant';
+
 import 'vant/lib/index.css';
+// 引入vant组件库
+import getVant from './plugins'
+
+
 const app = createApp(App)
-app.use(store).use(router).use(Swipe).use(SwipeItem).mount('#app')
+getVant(app)
+app.use(store).use(router).mount('#app')

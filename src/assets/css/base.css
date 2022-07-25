@@ -54,4 +54,7 @@ a {
 .right {
   float: right;
 }
-
+.iconpark-icon {
+  width: 1em;
+  height: 1em;
+}
