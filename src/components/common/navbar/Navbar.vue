@@ -14,7 +14,6 @@
 
 <style scoped>
 .nav-bar {
-    background-color: #f6f6f6;
     display: flex;
     height: .88rem;
     line-height: .88rem;
@@ -24,7 +23,7 @@
 
 .left, .right {
     display: flex;
-    width: 1.2rem;
+    width: .9rem;
     height: .88rem;
     justify-content: space-around;
     align-items: center;
@@ -34,5 +33,6 @@
     display: flex;
     flex: 1;
     justify-content: space-around;
+    align-items: center;
 }
 </style>

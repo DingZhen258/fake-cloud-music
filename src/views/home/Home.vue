@@ -1,8 +1,9 @@
 <template>
     <div id="home">
        <TopSwiper></TopSwiper>
-       <IconList></IconList>
-       <MusicList/>
+       <!-- <IconList></IconList> -->
+       <DiscoverSongSheet/>
+       <HighqualitySheet/>
     </div>
 </template>
 
@@ -11,7 +12,9 @@
 
 import TopSwiper from '@/views/home/childComps/TopSwiper.vue'
 import IconList from '@/views/home/childComps/IconList.vue'
-import MusicList from '@/components/content/musicList/MusicList'
+import DiscoverSongSheet from '@/components/content/songSheet/DiscoverSongSheet'
+import HighqualitySheet from '@/components/content/songSheet/HighqualitySheet'
+
     export default {
         name:'Home',
         data(){
@@ -21,7 +24,8 @@ import MusicList from '@/components/content/musicList/MusicList'
         components:{
             TopSwiper,
             IconList,
-            MusicList
+            DiscoverSongSheet,
+            HighqualitySheet
         },
         methods:{
            

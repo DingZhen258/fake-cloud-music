@@ -21,6 +21,7 @@ import { reactive,onMounted } from 'vue'
         const state = reactive({
             imgs:[]
         })
+        // 渲染轮播图 请求数据
         onMounted(async ()=>{
             let res = await getHomeData()
             //  getHomeData().then(res=>{

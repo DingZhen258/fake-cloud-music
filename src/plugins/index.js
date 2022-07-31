@@ -1,7 +1,7 @@
-import { Swipe, SwipeItem, Tabbar, TabbarItem } from 'vant';
+import { Swipe, SwipeItem, Tabbar, TabbarItem, Popup, Sticky } from 'vant';
 
 const vants = [
-    Swipe, SwipeItem, Tabbar, TabbarItem
+    Swipe, SwipeItem, Tabbar, TabbarItem, Popup, Sticky
 ]
 
 export default function getVant(app) {

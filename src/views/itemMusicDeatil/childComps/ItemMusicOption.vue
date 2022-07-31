@@ -5,12 +5,12 @@
             <OptionItem>
                 <template v-slot:item-icon><svg class="iconpark-icon"><use href="#message"></use></svg></template>
                 <!-- 评论条数 -->
-                <template v-slot:item-text>{{playlist.commentCount}}</template>
+                <template v-slot:item-text>{{$myFun.changeCount(playlist.commentCount)}}</template>
             </OptionItem>
             <OptionItem>
                 <template v-slot:item-icon><svg class="iconpark-icon"><use href="#share-one"></use></svg></template>
                 <!-- 分享次数 -->
-                <template v-slot:item-text>{{playlist.shareCount}}</template>
+                <template v-slot:item-text>{{$myFun.changeCount(playlist.shareCount)}}</template>
             </OptionItem>
             <OptionItem>
                 <template v-slot:item-icon><svg class="iconpark-icon"><use href="#download"></use></svg></template>
@@ -47,6 +47,7 @@ import OptionItem from '@/components/common/optionItem/OptionItem.vue'
 .item-music-option{
     margin-top: .4rem;
     color: white;
+    margin-bottom:.6rem ;
 }
 .iconpark-icon{
     width: .6rem;

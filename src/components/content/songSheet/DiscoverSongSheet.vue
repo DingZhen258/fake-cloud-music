@@ -1,18 +1,18 @@
 <template>
     <div class="music-list">
         <div class="music-top">
-            <div class="title">发现好歌单</div>
-            <div class="more">查看更多</div>
+            <h2>发现好歌单</h2>
+            <!-- <div class="more">查看更多</div> -->
         </div>
         <div class="music-goods">
             <van-swipe class="goods-swiper" :loop="false" 
             :width="120" :show-indicators="false">
-                <van-swipe-item v-for="item in state.musicList" :key="item" :style="{width:2.4+'rem'}">
+                <van-swipe-item v-for="item in state.discoverSongSheet" :key="item" :style="{width:2.4+'rem'}">
                     <router-link :to="{path:'/itemMusicDeatil',query:{id:item.id}}">
                         <img :src="item.picUrl" alt="">
                         <span class="playCount">
                             <svg class="iconpark-icon"><use href="#play-one"></use></svg>
-                            {{changeCount(item.playCount)}}
+                            {{$myFun.changeCount(item.playCount)}}
                         </span>
                         <div class="name">{{item.name}}</div>
                     </router-link>
@@ -29,41 +29,31 @@ import { reactive,onMounted } from 'vue'
     export default { 
         setup(){
             const state = reactive({
-                musicList:[],
-            })
-            // 处理播放量
-            function changeCount(num){
-                if(num>=100000000){
-                    return (num / 100000000).toFixed(1) + "亿";
-                }
-                else if(num >= 10000){
-                    return (num / 10000).toFixed(1) + "万";
-                }
-            }
-            
+                discoverSongSheet:[],
+            })          
             onMounted(async ()=>{
                 let res = await getpersonalized()
                 // getpersonalized().then(res=>{
-                state.musicList=res.data.result
+                state.discoverSongSheet=res.data.result
                     // console.log(personalized.musicList);
                     
                 // })
             })
-            return {state,changeCount}
+            return {state}
         }
     }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .music-list{
     width: 100%;
-    padding: 0.25rem;
+    padding: 0.2rem;
 }
 /* 模块标题 */
 .music-top{
     display: flex;
     justify-content: space-between;
-    margin-bottom: .2rem;
+    margin-bottom: .3rem;
 }
 .more{
     border: 1px solid #ccc;
@@ -73,11 +63,7 @@ import { reactive,onMounted } from 'vue'
     border-radius: 15px;
     font-size: .25rem;
 }
-.title{
-    line-height: 0.6rem;
-    font-size: 0.4rem;
-    font-weight: 900;
-}
+
 
 /* 每日歌单 */
 .music-goods{
@@ -95,13 +81,13 @@ import { reactive,onMounted } from 'vue'
     padding-right:.2rem;
     width: 2.3rem;
     height: 100%;
-}
-.van-swipe-item img{
-    border-radius: .35rem;
+    img{
+    border-radius: .25rem;
     width: 100%;
+    }
 }
+ 
 .name{
-    display: -webkit-box;
     height: .55rem;
     font-size: .2rem;
     overflow: hidden;
@@ -121,10 +107,11 @@ import { reactive,onMounted } from 'vue'
     border-radius: .2rem;
     font-size: .2rem;
     color: white;
-    z-index: 33;
-}
-.iconpark-icon{
+    z-index: 3;
+    .iconpark-icon{
     width: 0.3rem;
     height:0.3rem;
+    }
 }
+
 </style>

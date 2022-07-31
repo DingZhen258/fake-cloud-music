@@ -1,10 +1,16 @@
 <template>
     <!-- 歌单封面图以及标题用户信息 -->
-    <div class="introduce">
-        <img :src="playlist.coverImgUrl" alt="">
+    <div class="introduce"> 
+        <div class="item-img">
+            <img :src="playlist.coverImgUrl"/>
+            <span class="playCount">
+                <svg class="iconpark-icon"><use href="#play-one"></use></svg>
+                {{$myFun.changeCount(playlist.playCount)}}
+            </span>
+        </div>
         <div class="right-content">
             <p>{{playlist.name}}</p>
-            <span class="creator">
+            <span class="creator"  v-if="playlist!=''">
                 <img :src="playlist.creator.avatarUrl" alt=""/>
                 <p>{{playlist.creator.nickname}}</p>
                 <svg class="iconpark-icon"><use href="#right"></use></svg>  
@@ -19,11 +25,6 @@
 
 <script>
     export default {
-        setup(props){
-            props.playlist.creator=""
-
-            return
-        },
         components:{
         },
         props:{
@@ -39,19 +40,36 @@
 </script>
 
 <style  scoped>
-.item-music-top{
-}
-
 
 /* 中部 */
 .introduce{
     display: flex;
     justify-content: space-between;
-    margin: .2rem;
+    margin: .3rem .2rem;
 }
-.introduce img{
+.item-img{
+    position: relative;
     width: 36%;
+}
+.item-img img{
+    width:100%;
     border-radius: 15px;
+}
+.playCount {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: .1rem;
+    right:.1rem;
+    height: .5rem;
+    padding: 0.06rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color:rgb(0, 0, 0,.4);
+    border-radius: .2rem;
+    font-size: .2rem;
+    color: white;
+    z-index: 33;
 }
 .right-content{
     display: flex;
@@ -87,6 +105,9 @@
     -webkit-box-orient: vertical;
     font-size: 0.24rem;
     color: #ccc;
+}
+.iconpark-icon{
+    width: .3rem;
 }
 
 </style>
