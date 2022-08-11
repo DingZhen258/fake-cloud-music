@@ -63,8 +63,7 @@ import { mapState,mapMutations} from 'vuex'
             },
             // audio自带的事件 将当前时间提交
             commitCurrentTime(){
-                    this.updateCurrentTime(this.$refs.audio.currentTime)
-                console.log(this.$store.state.currentTime);
+                this.updateCurrentTime(this.$refs.audio.currentTime)
 
             },
             ...mapMutations([

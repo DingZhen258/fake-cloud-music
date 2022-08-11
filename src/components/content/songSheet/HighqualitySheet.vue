@@ -34,7 +34,6 @@ import { reactive,onMounted } from 'vue'
             })          
             onMounted(async ()=>{
                 let res = await getHighquality()
-                console.log(res.data.playlists);
                 state.highqualitySheet = res.data.playlists.slice(0, 6)// 默认渲染6条数据
             })
             async function moreShow(){//点击加载更多

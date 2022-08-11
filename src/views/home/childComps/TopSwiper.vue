@@ -24,13 +24,8 @@ import { reactive,onMounted } from 'vue'
         // 渲染轮播图 请求数据
         onMounted(async ()=>{
             let res = await getHomeData()
-            //  getHomeData().then(res=>{
-                    state.imgs=res.data.banners
-                    console.log(state.imgs);
-            //         console.log(state.imgs);
-            //     })
+            state.imgs=res.data.banners
         })
-
         return { state }
       }
     }

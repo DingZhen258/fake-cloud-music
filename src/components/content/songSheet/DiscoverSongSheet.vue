@@ -33,11 +33,7 @@ import { reactive,onMounted } from 'vue'
             })          
             onMounted(async ()=>{
                 let res = await getpersonalized()
-                // getpersonalized().then(res=>{
                 state.discoverSongSheet=res.data.result
-                    // console.log(personalized.musicList);
-                    
-                // })
             })
             return {state}
         }
