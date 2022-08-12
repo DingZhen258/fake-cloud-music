@@ -4,7 +4,7 @@
             <h2>发现好歌单</h2>
             <!-- <div class="more">查看更多</div> -->
         </div>
-        <div class="music-goods">
+        <div class="music-goods" v-if="state.discoverSongSheet!=''">
             <van-swipe class="goods-swiper" :loop="false" 
             :width="120" :show-indicators="false">
                 <van-swipe-item v-for="item in state.discoverSongSheet" :key="item" :style="{width:2.4+'rem'}">
@@ -19,11 +19,14 @@
                 </van-swipe-item>
             </van-swipe>
         </div>
+        <Loading v-else/>
     </div>
 </template>
 
 <script>
 import {getpersonalized} from '@/network/home'
+
+import Loading  from '@/components/common/loading/Loading.vue'
 
 import { reactive,onMounted } from 'vue'
     export default { 
@@ -36,14 +39,21 @@ import { reactive,onMounted } from 'vue'
                 state.discoverSongSheet=res.data.result
             })
             return {state}
+        },
+        components:{
+            Loading
         }
     }
 </script>
 
 <style lang="less" scoped>
 .music-list{
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    height: 4.22rem;
     padding: 0.2rem;
+
 }
 /* 模块标题 */
 .music-top{

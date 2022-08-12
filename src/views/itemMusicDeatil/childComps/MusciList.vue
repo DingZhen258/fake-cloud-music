@@ -1,5 +1,5 @@
 <template>
-    <div class="music-list">
+    <div class="music-list" v-if="musiclist!=''">
         <van-sticky :offset-top="43">
             <div class="music-list-top">
                 <div class="list-left" @click="starplay(0)">
@@ -28,11 +28,14 @@
             </div>
         </div>
     </div>
+    <Loading v-else class="loading"/>
 </template>
 
 <script>
 import { useRoute } from "vue-router"
 import { useStore } from "vuex"
+
+import Loading  from '@/components/common/loading/Loading.vue'
     export default {
         setup(props){
             const store = useStore()
@@ -53,16 +56,16 @@ import { useStore } from "vuex"
             }
             return {starplay,store}
         },
-        props:{
+        props:['musiclist','subsCount'],
             // 接收歌单列表
-            musiclist:Array,
-            subsCount:Number
-        },
         watch:{
             // 当歌单改变 将播放效果重置
             musiclist(){
                 this.$store.commit('updatePlayingIndex',-1)
             }
+        },
+        components:{
+            Loading,
         }
     }
 </script>
@@ -148,5 +151,8 @@ import { useStore } from "vuex"
 }
 .playing{
     color: red;
+}
+.loading{
+    margin-top: 2.5rem;
 }
 </style>

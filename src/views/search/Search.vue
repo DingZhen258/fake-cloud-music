@@ -41,7 +41,7 @@ import {getSearchRes} from '@/network/search'
 
 import Navbar from '@/components/common/navbar/Navbar.vue'
 
-import { mapState,mapMutations} from 'vuex'
+import {mapMutations} from 'vuex'
     export default {
         data(){
             return {

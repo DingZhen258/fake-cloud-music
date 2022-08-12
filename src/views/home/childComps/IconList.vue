@@ -16,10 +16,12 @@
           <img src="@/assets/img/rank.svg" alt="">
           <span>排行榜</span>
        </div>
+       <Loading/>
     </div>
 </template>
 
 <script>
+import Loading  from '@/components/common/loading/Loading.vue'
     export default {
       setup() {
          const icon = {
@@ -27,7 +29,11 @@
          return {
            icon,
          };
-       },              
+       },   
+       components:{
+    Loading,
+    Loading
+}           
     }
 </script>
 

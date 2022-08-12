@@ -47,7 +47,9 @@ import OptionItem from '@/components/common/optionItem/OptionItem.vue'
 .item-music-option{
     margin-top: .4rem;
     color: white;
-    margin-bottom:.6rem ;
+    margin-bottom:.5rem ;
+    height: 1.2rem;
+
 }
 .iconpark-icon{
     width: .6rem;

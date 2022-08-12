@@ -3,9 +3,9 @@
         <div class="title">
             <h2>热门歌单推荐</h2>
         </div>
-        <div class="goods">
-            <div class="goods_items" 
-            v-for="item in state.highqualitySheet" :key="item" >
+        <div class="goods"  v-if="state.highqualitySheet!=''">
+            <div class="goods_items"  
+            v-for="item in state.highqualitySheet" :key="item">
                 <router-link :to="{path:'/itemMusicDeatil',query:{id:item.id}}">
                     <img :src="item.coverImgUrl" alt="">
                     <p>{{item.name}}</p>
@@ -18,11 +18,14 @@
             <button v-if="state.isShowMore" @click="moreShow">点击加载更多</button>
             <h3 v-else>哎呀,到底了~</h3>
         </div>
+        <Loading class="loading" v-else/>
     </div>
 </template>
 
 <script>
 import {getHighquality} from '@/network/home'
+
+import Loading  from '@/components/common/loading/Loading.vue'
 
 import { reactive,onMounted } from 'vue'
     export default { 
@@ -43,6 +46,9 @@ import { reactive,onMounted } from 'vue'
                 res.data.playlists.length >state.nowPage * 6? state.isShowMore = true : state.isShowMore = false
             }
             return {state,moreShow}
+        },
+        components:{
+            Loading,
         }
     }
 </script>
@@ -52,6 +58,14 @@ import { reactive,onMounted } from 'vue'
     width: 100%;
     padding: 0 0.2rem;
     margin-bottom: 1.5rem;
+    text-align: center;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+}
+.loading{
+    margin-top: 1rem;
 }
 .goods{
     display: flex;

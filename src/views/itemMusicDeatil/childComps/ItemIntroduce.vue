@@ -1,31 +1,37 @@
 <template>
     <!-- 歌单封面图以及标题用户信息 -->
     <div class="introduce"> 
-        <div class="item-img">
-            <img :src="playlist.coverImgUrl"/>
-            <span class="playCount">
-                <svg class="iconpark-icon"><use href="#play-one"></use></svg>
-                {{$myFun.changeCount(playlist.playCount)}}
-            </span>
+        <div class="content" v-if="playlist!=''">
+            <div class="item-img">
+                <img :src="playlist.coverImgUrl"/>
+                <span class="playCount">
+                    <svg class="iconpark-icon"><use href="#play-one"></use></svg>
+                    {{$myFun.changeCount(playlist.playCount)}}
+                </span>
+            </div>
+            <div class="right-content">
+                <p>{{playlist.name}}</p>
+                <span class="creator"  v-if="playlist!=''">
+                    <img :src="playlist.creator.avatarUrl" alt=""/>
+                    <p>{{playlist.creator.nickname}}</p>
+                    <svg class="iconpark-icon"><use href="#right"></use></svg>  
+                </span>
+                <p class="about">
+                    <span>{{playlist.description}}</span>
+                    <svg class="iconpark-icon"><use href="#right"></use></svg>
+                </p>
+            </div>
         </div>
-        <div class="right-content">
-            <p>{{playlist.name}}</p>
-            <span class="creator"  v-if="playlist!=''">
-                <img :src="playlist.creator.avatarUrl" alt=""/>
-                <p>{{playlist.creator.nickname}}</p>
-                <svg class="iconpark-icon"><use href="#right"></use></svg>  
-            </span>
-            <p class="about">
-                <span>{{playlist.description}}</span>
-                <svg class="iconpark-icon"><use href="#right"></use></svg>
-            </p>
-        </div>
+        <Loading v-else/>
     </div>
 </template>
 
 <script>
+import Loading from '@/components/common/loading/Loading.vue';
+
     export default {
         components:{
+            Loading,
         },
         props:{
             playlist:{
@@ -40,9 +46,12 @@
 </script>
 
 <style  scoped>
-
-/* 中部 */
 .introduce{
+    height: 2.7rem;
+    width: 100%;
+}
+/* 中部 */
+.content{
     display: flex;
     justify-content: space-between;
     margin: .3rem .2rem;

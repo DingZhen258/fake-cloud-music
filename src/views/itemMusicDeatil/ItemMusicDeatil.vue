@@ -1,7 +1,7 @@
 <template>
     <div class="item-music-deatil">
-        <img :src="state.playlist.coverImgUrl" class="bgimg">
         <van-sticky><DetailNav/></van-sticky>
+        <img :src="state.playlist.coverImgUrl" class="bgimg">
         <ItemIntroduce :playlist='state.playlist'/>
         <ItemMusicOption :playlist='state.playlist'/>
         <MusciList :musiclist='state.musiclist'
@@ -14,6 +14,7 @@ import ItemIntroduce from '@/views/itemMusicDeatil/childComps/ItemIntroduce.vue'
 import ItemMusicOption from '@/views/itemMusicDeatil/childComps/ItemMusicOption.vue'
 import DetailNav from '@/views/itemMusicDeatil/childComps/DetailNav.vue'
 import MusciList from '@/views/itemMusicDeatil/childComps/MusciList.vue'
+import Loading  from '@/components/common/loading/Loading.vue'
 
 import {getMusicItem,getAllMusic} from '@/network/musicItem'
 
@@ -44,7 +45,8 @@ import { useStore } from 'vuex'
             ItemIntroduce,
             ItemMusicOption,
             DetailNav,
-            MusciList
+            MusciList,
+            Loading
         }
     }
 </script>

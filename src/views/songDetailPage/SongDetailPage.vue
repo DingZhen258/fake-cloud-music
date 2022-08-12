@@ -1,6 +1,7 @@
 <template>
     <div class="song-deatil-page">
         <img :src="songList.al.picUrl" alt="" class="bgimg" />
+        
         <PageTopVue :songList="songList"/>
         <PageContent :songList="songList"></PageContent>
         <PageBottom :play="play"/>
